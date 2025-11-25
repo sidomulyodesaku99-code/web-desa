@@ -1,101 +1,123 @@
 /* ==============================
-   Contact Page - Modern Formal (Updated)
+   Contact Page - Modern Minimal
 ============================== */
 
-/* Container umum */
 .contact-page {
   font-family: 'Poppins', sans-serif;
   color: #2a2a2a;
-  background: linear-gradient(180deg, #f4fdf9 0%, #eaf7f1 50%, #f9f9f9 100%);
+  background: #f7faf8;
   padding-bottom: 4rem;
 }
 
-
 /* ===== Header ===== */
 .profile-header {
-  background: linear-gradient(135deg, #2f7f62, #3ca86d);
+  background-color: #2a7f62;
   color: #fff;
-  padding: 5rem 2rem;
   text-align: center;
-  border-radius: 0 0 40px 40px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  padding: 5rem 2rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0 0 35px 35px;
 }
 .profile-header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 .profile-header p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: auto;
+  line-height: 1.6;
   opacity: 0.9;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 /* ===== Info Cards Grid ===== */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: -4rem 2rem 3rem 2rem; /* cards sedikit naik ke header */
-}
-.contact-card {
-  background: #d7fdea;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: -2rem 2rem 3rem 2rem;
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, #6ce7a9 0%, #f7faf8 100%);
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.contact-card {
+  background: #ffffffcc; /* putih semi transparan */
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-radius: 14px;
+  border-left: 6px solid #2a7f62;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 .contact-card h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   color: #2a7f62;
+  font-size: 1.25rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
+  gap: 8px;
 }
 .contact-card p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.6;
+  color: #555;
+  font-size: 0.95rem;
 }
-.contact-card.emergency h3 {
-  color: #e74c3c;
+.contact-card i {
+  font-size: 1.1rem;
 }
 
 /* ===== Form + Sidebar ===== */
 .contact-main-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-  margin: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: -2rem 2rem 3rem 2rem;
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, #6ce7a9 0%, #f7faf8 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
 }
 
-/* ===== Form ===== */
+/* ===== Contact Form ===== */
 .contact-form-card {
-  background: #c8ffc9;
+  background: #ffffff;
   padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
+  border-radius: 16px;
+  border-left: 6px solid #2a7f62;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 .contact-form-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 .contact-form-card h2 {
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
   color: #2a7f62;
-  font-size: 2rem;
-  border-bottom: 2px solid #3ca86d;
-  display: inline-block;
-  padding-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 .contact-form-card p {
+  color: #666;
   margin-bottom: 1.5rem;
-  color: #555;
 }
 .contact-form-card form input,
 .contact-form-card form textarea,
@@ -106,31 +128,31 @@
   border: 1px solid #ccc;
   margin-bottom: 1.2rem;
   font-size: 1rem;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 .contact-form-card form input:focus,
 .contact-form-card form textarea:focus,
 .contact-form-card form select:focus {
   border-color: #2a7f62;
-  box-shadow: 0 0 8px rgba(42,127,98,0.2);
+  box-shadow: 0 0 5px rgba(42,127,98,0.15);
   outline: none;
 }
 .btn-send {
   background: #2a7f62;
   color: #fff;
-  padding: 14px 30px;
-  border-radius: 12px;
+  padding: 12px 28px;
+  border-radius: 10px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
+  transition: all 0.3s ease;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .btn-send:hover {
-  background: #3ca86d;
-  transform: scale(1.05);
+  background: #248c59;
+  transform: translateY(-2px);
 }
 
 /* ===== Sidebar ===== */
@@ -140,47 +162,53 @@
   gap: 1.5rem;
 }
 .contact-sidebar .contact-card {
+  border-left: 6px solid #2a7f62;
   padding: 1.8rem;
 }
-.btn-outline {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  padding: 12px 20px;
-  border: 2px solid #2a7f62;
+
+/* ===== Catatan Sidebar ===== */
+.contact-note {
+  background: #f0f6f2;
+  border-left: 6px solid #2a7f62;
+  border-radius: 14px;
+  padding: 1.8rem;
+  font-size: 0.95rem;
+  color: #2a2a2a; /* ubah dari #444 ke sedikit lebih gelap */
+}
+.contact-note h3 {
   color: #2a7f62;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  text-align: center;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.6rem;
 }
-.btn-outline:hover {
-  background: #2a7f62;
-  color: #fff;
-  transform: translateY(-2px);
+.contact-note i {
+  font-size: 1.2rem;
 }
+
 
 /* ===== Map ===== */
 .contact-map-card {
   background: #fff;
   padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
   margin: 2rem;
+  border-left: 6px solid #2a7f62;
 }
 .contact-map-card h2 {
   color: #2a7f62;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.5rem;
+  gap: 8px;
 }
 .contact-map-card iframe {
   width: 100%;
   height: 450px;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 /* ===== Responsif ===== */
@@ -197,15 +225,9 @@
     font-size: 1rem;
   }
   .contact-form-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .contact-card h3 {
+    font-size: 1.1rem;
   }
 }
-
-/* Catatan di sidebar */
-.contact-note {
-  background: #88b04b; /* beda warna tapi tetap lembut */
-  border-radius: 15px;
-  padding: 1.8rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-

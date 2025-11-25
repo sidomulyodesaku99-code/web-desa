@@ -1,14 +1,43 @@
-/* ==============================
-   1. Global Styles
-============================== */
-body {
-  font-family: 'Poppins', Arial, sans-serif;
+/* ==========================================================
+   STYLE.CSS — WEBSITE DESA SIDOMULYO
+   Tema: Hijau Alam, Modern, Responsif
+   ==========================================================
+   Struktur:
+   1. Reset & Global Styles
+   2. Typography & Elements
+   3. Layout Utilities
+   4. Buttons
+   5. Navbar (Modern Navigation)
+   6. Header / Hero Section
+   7. Tabs & Cards (Konten Dinamis)
+   8. Profil Desa & Struktur Organisasi
+   9. Statistik Desa
+   10. Footer
+   11. Main Content Layout
+   12. Responsive Adjustments
+   ========================================================== */
+
+
+/* ==========================================================
+   1. RESET & GLOBAL STYLES
+   ========================================================== */
+html, body {
   margin: 0;
   padding: 0;
-  background: #fdfcf6; /* putih krem lembut */
+  width: 100%;
+  overflow-x: hidden; /* Cegah geser horizontal */
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fdfcf6;
   color: #333;
 }
 
+
+/* ==========================================================
+   2. TYPOGRAPHY & ELEMENTS
+   ========================================================== */
 h1, h2, h3 {
   color: #ffffff;
   margin-bottom: 0.5em;
@@ -24,14 +53,21 @@ a {
   color: inherit;
 }
 
-/* Container umum */
+
+/* ==========================================================
+   3. LAYOUT UTILITIES
+   ========================================================== */
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Tombol umum */
+
+
+/* ==========================================================
+   4. BUTTONS
+   ========================================================== */
 .btn {
   display: inline-block;
   background: #2f7f62;
@@ -43,141 +79,83 @@ a {
   margin-top: 10px;
   transition: background 0.3s, transform 0.2s;
 }
+
 .btn:hover {
   background: #3abf94;
 }
 
-
-/* ==============================
-   Hero Section
-============================== */
-.hero-section {
-  position: relative;
-  background: linear-gradient(
-      rgba(114, 183, 158, 0.6),
-      rgba(27,94,32,0.6)
-    ),
-    url('/static/desaapp/img/bg-desa.jpg') no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  padding: 100px 20px;
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-}
-.hero-section .hero-content {
-  max-width: 600px;
-}
-.hero-section h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.hero-section h1 .hero-icon {
-  color: #59b011;
-  font-size: 7rem;
-}
-.hero-section p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  opacity: 0.9;
-}
-.hero-section .hero-btn {
-  display: inline-block;
-  background-color: #00c130;
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-.hero-section .hero-btn:hover {
-  background-color: #2f7f62;
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-/* Responsif */
-@media (max-width: 768px) {
-  .hero-section {
-    text-align: center;
-    flex-direction: column;
-    padding: 80px 20px;
-  }
-  .hero-section h1 {
-    font-size: 2.2rem;
-    justify-content: center;
-  }
-  .hero-section h1 .hero-icon {
-    font-size: 2rem;
-  }
-  .hero-section p {
-    font-size: 1rem;
-  }
-  .hero-section .hero-btn {
-    padding: 12px 24px;
-  }
-}
-
-
-/* ==============================
-   Navbar Modern
-============================== */
+/* ==========================================================
+   5. NAVBAR (MODERN NAVIGATION - FINAL VERSION)
+   ========================================================== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(90deg, #2f7f62, #88b04b);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: background 0.3s ease;
+  background: #2f7f62;
+  padding: 0.8rem 2%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0 ;
+  box-shadow: 0 2px 10px rgba(47, 127, 98, 0.35); /* bayangan hijau lembut */
 }
-/* Brand */
+
+/* Navbar inner wrapper */
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Brand section */
 .brand-logo {
   background: #fff;
   color: #2f7f62;
   font-weight: bold;
   font-size: 1.5rem;
-  padding: 8px 14px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
 .navbar-brand-text h1 {
   color: #fff;
   font-size: 1.6rem;
   margin: 0;
+  font-weight: 700;
 }
+
 .navbar-brand-text p {
-  color: #e0f7ec;
+  color: #d4f5e2;
   font-size: 1rem;
   margin: 0;
 }
-/* Desktop Links */
+
+/* Navigation Links */
 .navbar-links {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  flex-wrap: wrap;
   margin: 0;
-  padding: 0;
 }
+
 .navbar-links a {
   color: #fff;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
+
 .navbar-links a:hover,
 .navbar-links a.active {
-  color: #ffd166;
+  color: #75ff66;
 }
+
 /* Admin Button */
 .admin-btn {
   background: #88b04b;
@@ -187,69 +165,100 @@ a {
   font-weight: 600;
   transition: all 0.3s ease;
 }
+
 .admin-btn:hover {
-  background: #2f7f62;
+  background: #6c9c3d;
 }
-/* Mobile */
+
+/* Mobile Navigation */
 .mobile-toggle {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
   color: #fff;
 }
+
 .mobile-menu {
   display: none;
   flex-direction: column;
   background: #2f7f62;
   padding: 1rem;
-  transition: max-height 0.3s ease;
 }
-.mobile-menu a {
-  color: #fff;
-  margin: 0.5rem 0;
-  transition: color 0.3s;
+
+.mobile-menu.show {
+  display: flex;
 }
-.mobile-menu a:hover {
-  color: #ffd166;
+
+/* RESPONSIVE SETTINGS */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .navbar {
+    padding: 0.8rem 5%;
+  }
 }
-/* Responsive Navbar */
-@media(max-width:768px){
-  .navbar-links { display: none; }
-  .mobile-toggle { display: block; }
-  .mobile-menu.show { display: flex; }
+
+/* Hapus jarak putih di bawah navbar */
+body, html, main {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fdf9;
+}
+
+/* Hilangkan garis putih halus di bawah navbar */
+.navbar::after {
+  content: "";
+  display: block;
+  height: 0;
+  background: transparent;
+  border: none;
 }
 
 
-/* ==============================
-   4. Layanan / Services Header Section 
-============================== */
+/* ==========================================================
+   6. HEADER / HERO SECTION
+   ========================================================== */
 .header-section {
+  width: 100%;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: linear-gradient(135deg, #2f7f62, #88b04b);
   color: #fff;
-  border-radius: 12px;
   margin-bottom: 40px;
+  box-sizing: border-box;
 }
+
 .header-section h1 {
   font-size: 2.8rem;
   margin-bottom: 10px;
 }
+
 .header-section p {
   font-size: 1.2rem;
   opacity: 0.9;
 }
 
-/* Tabs */
+
+/* ==========================================================
+   7. TABS & CARDS (KONTEN DINAMIS)
+   ========================================================== */
 .tabs { margin-top: 20px; }
+
 .tab-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
-.tab-buttons li { list-style: none; }
+
+.tab-buttons li {
+  list-style: none;
+}
+
 .tab-buttons li button {
   padding: 10px 20px;
   border: none;
@@ -260,49 +269,28 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .tab-buttons li.active button,
 .tab-buttons li button:hover {
   background: #2f7f62;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(47,127,98,0.3);
 }
-/* Tab content */
+
 .tab-contents {
   max-width: 1200px;
   margin: auto;
 }
-.tab-pane {
-  display: none;
-  animation: fadeIn 0.4s ease-in-out;
-}
+
+.tab-pane { display: none; }
 .tab-pane.active { display: block; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
-/* Filter Bar */
-.filter-bar {
-  text-align: right;
-  margin-bottom: 20px;
-}
-.filter-bar select {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.filter-bar select:hover { border-color: #2f7f62; }
-
-/* Card Grid */
+/* Card Layout */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
-/* Card umum */
+
 .card {
   background: #fff;
   border-radius: 12px;
@@ -311,510 +299,305 @@ a {
   transition: transform 0.3s;
   margin-bottom: 2rem;
 }
-.card h2, .card h3 {
-  color: #2f7f62;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
+
 .card:hover { transform: translateY(-5px); }
+
 .card h3 {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.badge {
-  background: #88b04b;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-}
-/* Requirements List */
-.requirements ul {
-  margin: 5px 0 10px 20px;
-  padding: 0;
-  list-style-type: disc;
-}
-.requirements strong {
-  display: block;
-  margin-bottom: 5px;
-}
-/* Tracking Cards & Progress */
-.tracking-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.tracking-form input[type="text"] {
-  flex: 1;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-.tracking-form button {
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: none;
-  background: #2f7f62;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.tracking-form button:hover { background: #3abf94; }
-.status {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-  display: inline-block;
-}
-.status.selesai { background: #3abf94; color: #fff; }
-.status.proses { background: #ffd166; color: #333; }
-.status.tunda { background: #f76c6c; color: #fff; }
-.progress-bar {
-  background: #e6f4ec;
-  border-radius: 8px;
-  height: 10px;
-  overflow: hidden;
-  margin-top: 8px;
-}
-.progress-bar .progress {
-  height: 100%;
-  background: linear-gradient(90deg, #2f7f62, #3abf94);
-  width: 0;
-  transition: width 1s ease-in-out;
-}
-/* External Links Tab */
-.card-grid a.btn { margin-top: 10px; }
-/* Schedule Table */
-.schedule {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-.schedule td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-.schedule .closed {
-  color: #f76c6c;
-  font-weight: 600;
-}
-
-
-
-/* ==============================
-   6. Profil Desa / Statistik
-============================== */
-.profile-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-.profile-header {
-  background: linear-gradient(135deg, #2f7f62, #3ca86d);
-  color: #fff;
-  padding: 4rem 2rem;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-.profile-header h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
+  color: #2f7f62;
   margin-bottom: 1rem;
 }
-.profile-header p {
-  font-size: 1.2rem;
-  opacity: 0.95;
-  max-width: 700px;
-  margin: auto;
-}
-/* Tabs */
-.tabs-container { margin-top: 2.5rem; }
-.tabs-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-}
-.tab-btn {
-  padding: 0.7rem 1.4rem;
-  border: none;
-  border-radius: 8px;
-  background: #eaf7f1;
-  color: #2f7f62;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.tab-btn.active,
-.tab-btn:hover {
-  background: #2f7f62;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(47,127,98,0.3);
-}
 
 
-/* ==============================
-   Struktur Pemerintahan
-============================== */
-.officials-tree ul {
-  padding-top: 20px;
-  position: relative;
-  padding-left: 0;
-  list-style-type: none;
-}
-.officials-tree li {
-  text-align: center;
-  position: relative;
-  padding: 20px 5px 0 5px;
-}
-.officials-tree li::before, 
-.officials-tree li::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 50%;
-  border-top: 2px solid #88b04b;
-  width: 50%;
-  height: 20px;
-}
-.officials-tree li::after {
-  right: auto;
-  left: 50%;
-  border-left: 2px solid #88b04b;
-}
-.officials-tree li:only-child::before,
-.officials-tree li:only-child::after {
-  display: none;
-}
-.officials-tree li:first-child::before,
-.officials-tree li:last-child::after {
-  border: 0 none;
-}
-.officials-tree li > ul::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  border-left: 2px solid #88b04b;
-  height: 20px;
-}
-.officials-tree .official-card {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 12px;
-  background: #f9fdfb;
-  border: 1px solid #e0f2e9;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 auto;
-}
-.officials-tree .official-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-.official-name {
-  font-weight: 700;
-  color: #2f7f62;
-  display: block;
-}
-.official-position {
-  font-size: 0.9rem;
-  color: #555;
-  display: block;
-  margin-top: 4px;
-}
-/* Responsive */
-@media (max-width: 768px) {
-  .officials-tree ul, .officials-tree li { padding: 0; }
-  .officials-tree li::before, 
-  .officials-tree li::after,
-  .officials-tree li > ul::before { display: none; }
-}
-
-
-/*pemerintah desa */
-.organigram ul {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.organigram li {
-  text-align: center;
-  position: relative;
-  padding: 20px 10px 0 10px;
-}
-
-.organigram li::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  border-left: 2px solid #88b04b;
-  height: 20px;
-}
-
-.organigram li:first-child::before { display: none; }
-
-.organigram li > ul {
-  display: flex;
-  justify-content: space-evenly; /* <-- pastikan anak-anak terdistribusi rapi */
-  margin-top: 20px;
-  padding-left: 0;
-  width: 100%;
-  position: relative;
-}
-
-.organigram li > ul::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  border-top: 2px solid #88b04b;
-  z-index: -1;
-}
-
-.organigram .official-card {
-  display: block;
-  padding: 12px 20px;
-  border-radius: 12px;
-  background: #f9fdfb;
-  border: 1px solid #e0f2e9;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  margin: 0 auto;
-  min-width: 160px;
-}
-
-/* Subtree untuk anggota lembaga */
-.organigram ul.subtree {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  padding-left: 0;
-  width: 100%;
-  position: relative;
-}
-
-.organigram ul.subtree::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  border-top: 2px solid #88b04b;
-  z-index: -1;
-}
-
-.organigram ul.subtree li {
-  flex: 1 1 30%; /* 3 kolom per baris */
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.organigram ul.subtree li::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  border-left: 2px solid #88b04b;
-  height: 20px;
-}
-
-.organigram ul.subtree li:first-child::before {
-  display: none;
-}
-
-/* Responsive mobile */
-@media (max-width: 768px) {
-  .organigram ul.subtree {
-    flex-direction: column;
-    align-items: center;
-  }
-  .organigram ul.subtree li::before {
-    display: none;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .organigram ul { flex-direction: column; align-items: center; }
-  .organigram li::before, .organigram li > ul::before { display: none; }
-  .organigram .official-card { margin: 10px 0; max-width: 200px; }
-}
-
-
-
-/* ==============================
-   Statistik Desa
-============================== */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-.stat-box {
-  background: #f0fdf4;
-  padding: 1.5rem 1rem;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-}
-.stat-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-.stat-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-.stat-value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2f7f62;
-}
-.stat-label {
-  font-size: 0.95rem;
-  color: #555;
-  margin-top: 0.4rem;
-}
-
-/* Alternating Colors for Stats */
-.stat-1 { background: #e6f4ec; }
-.stat-2 { background: #d3f0e0; }
-.stat-3 { background: #baf0d9; }
-.stat-4 { background: #a0ebcf; }
-
-/* Progress Usia */
-.age-group { margin-bottom: 1.5rem; }
-.age-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-}
-.progress-bar-bg {
-  background: #e6f4ec;
-  border-radius: 12px;
-  height: 14px;
-  overflow: hidden;
-}
-.progress-bar-fill {
-  height: 100%;
-  width: 0;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #2f7f62, #3abf94);
-  animation: fillWidth 1.2s forwards;
-}
-.progress-bar-fill {
-  width: var(--percentage, 0%);
-  animation: fillWidth 1.2s forwards;
-}
-
-@keyframes fillWidth {
-  from { width: 0%; }
-  to { width: var(--percentage, 0%); }
-}
-
-/* Data Wilayah */
-.admin-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-.admin-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 1.5rem 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.admin-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-.admin-card h4 {
-  color: #2f7f62;
-  font-size: 1.1rem;
-  margin-bottom: 0.6rem;
-}
-.admin-card p {
-  font-weight: 600;
-  color: #444;
-}
-
-
-
-/* ==============================
-   Footer Modern Formal
-============================== */
+/* ==========================================================
+   10. FOOTER
+   ========================================================== */
 footer {
   background-color: #1F3A3D;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
   padding: 50px 20px;
   text-align: center;
 }
+
 footer a {
   color: #fff;
-  text-decoration: none;
   transition: color 0.3s;
 }
-footer a:hover { color: #4ED6A7; }
+
+footer a:hover {
+  color: #4ED6A7;
+}
+
 footer .footer-grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
 }
-footer .footer-grid div {
-  flex: 1 1 200px;
-}
-footer .footer-grid div p:first-child {
-  font-weight: 600;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-footer .footer-grid i {
-  color: #4ED6A7;
-  transition: transform 0.3s;
-}
-footer .footer-grid i:hover { transform: scale(1.2); }
+
 footer hr {
   border: none;
   border-top: 1px solid #444;
   margin: 30px 0;
 }
+
 footer .copyright {
-  text-align: center;
   color: #ccc;
 }
-/* Responsive */
+
 @media (max-width: 768px) {
   footer .footer-grid {
     flex-direction: column;
-    text-align: center;
   }
-  footer .footer-grid div { margin-bottom: 20px; }
+}
+
+
+/* ==========================================================
+   11. MAIN CONTENT LAYOUT
+   ========================================================== */
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   12. RESPONSIVE ADJUSTMENTS
+   ========================================================== */
+@media (max-width: 768px) {
+  .navbar-links { flex-wrap: wrap; }
+  main { padding: 0 10px; }
+}
+
+/* ==========================================================
+   13. SCROLL TO TOP BUTTON
+   ========================================================== */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  background-color: #2f7f62;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+#scrollTopBtn.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  background-color: #3abf94;
+  transform: translateY(-4px);
+}
+
+#scrollTopBtn i {
+  font-size: 16px;
+}
+
+
+/* ==========================================================
+   LOGIN PAGE (DESA SIDOMULYO) — MODERN FOREST THEME
+   ========================================================== */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2f7f62, #88b04b);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 50px 45px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.login-card h2 {
+  color: #2f7f62;
+  font-weight: 700;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.login-card form {
+  margin-top: 10px;
+}
+
+.login-card .form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.login-card label {
+  color: #2f7f62;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #b2d8c3;
+  transition: all 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: #2f7f62;
+  box-shadow: 0 0 6px rgba(47, 127, 98, 0.4);
+  outline: none;
+}
+
+.btn-login {
+  width: 100%;
+  background: #2f7f62;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #3abf94;
+  transform: translateY(-2px);
+}
+
+.login-card .alert {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-card a {
+  display: inline-block;
+  color: #2f7f62;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: color 0.3s;
+}
+
+.login-card a:hover {
+  color: #3abf94;
+  text-decoration: underline;
+}
+
+/* Animasi lembut muncul dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .login-card {
+    width: 95%;
+    padding: 35px 25px;
+  }
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ==========================================================
+   NAVBAR: ADMIN PANEL & LOGIN/LOGOUT SECTION
+   ========================================================== */
+.admin-nav-item {
+  margin-left: 1rem;
+}
+
+.user-auth-item {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Garis pemisah antara menu utama dan login/logout */
+.nav-divider {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  height: 28px;
+  margin: 0 15px;
+  align-self: center;
+  list-style: none;
+}
+
+/* Efek hover halus pada login/logout */
+.nav-link {
+  color: #fff; /* pastikan warna putih tetap tampil */
+  transition: all 0.3s ease;
+  font-weight: 600; /* biar lebih jelas */
+}
+
+.nav-link:hover {
+  color: #ffd166 !important;
+}
+
+
+
+
+
+/* ==========================================================
+   DROPDOWN LOGIN FIX — TAMPIL SAAT KLIK, WARNA ALAM
+   ========================================================== */
+.dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #cdecd7;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+}
+
+.dropdown-item {
+  color: #2f7f62 !important; /* pastikan tetap hijau saat tampil */
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background-color: #dff5e7;
+  color: #1b4d3e !important;
+  font-weight: 600;
 }

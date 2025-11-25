@@ -1,0 +1,212 @@
+/* ===================================================
+   HOME PAGE FINAL DESIGN (Desa Sidomulyo)
+   =================================================== */
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(
+      rgba(47, 127, 98, 0.6),
+      rgba(47, 127, 98, 0.6)
+    ),
+    url('/static/desaapp/img/bg-desa.jpg') center/cover no-repeat;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.hero-container {
+  text-align: center;
+  max-width: 800px;
+  padding: 0 5%;
+  z-index: 2;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-section .hero-icon {
+  color: #b7f398;
+  margin-right: 10px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.hero-btn {
+  background-color: #59b011;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-btn:hover {
+  background-color: #2f7f62;
+  transform: scale(1.05);
+}
+
+/* ===== SAMBUTAN ===== */
+.sambutan-section {
+  background: #e9f5ef; /* warna hijau muda */
+  padding: 80px 0;
+}
+
+.content-container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.sambutan-flex {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* CARD FOTO KEPALA DESA */
+.sambutan-foto {
+  background: #c9c9c9;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  max-width: 420px;
+}
+
+.sambutan-foto img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sambutan-foto img:hover {
+  transform: scale(1.03);
+}
+
+/* TEKS SAMBUTAN */
+.sambutan-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.sambutan-text h2 {
+  color: #2f7f62;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.sambutan-text p {
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .sambutan-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sambutan-foto {
+    max-width: 80%;
+  }
+
+  .sambutan-text h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===== VISI & MISI ===== */
+.visi-misi-section {
+  background: #f5f9f5;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.visi-misi-section h2 {
+  color: #2f7f62;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.visi-subtitle {
+  color: #4caf50;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.visi-misi-flex {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.visi-block,
+.misi-block {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.visi-block h3,
+.misi-block h3 {
+  color: #2f7f62;
+  margin-bottom: 15px;
+}
+
+.misi-list p::before {
+  content: "✔ ";
+  color: #2f7f62;
+  font-weight: bold;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .hero-section h1 {
+    font-size: 2.4rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .hero-btn {
+    padding: 12px 24px;
+  }
+  .sambutan-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 80vh;
+    padding: 60px 5%;
+  }
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+  .visi-misi-section h2 {
+    font-size: 1.6rem;
+  }
+}

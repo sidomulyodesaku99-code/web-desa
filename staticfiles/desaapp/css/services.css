@@ -1,0 +1,190 @@
+/* =========================================================
+   SERVICES PAGE STYLES — Desa Sidomulyo Website
+   ========================================================= */
+
+/* ===== Header ===== */
+.profile-header {
+  background: linear-gradient(135deg, #2f7f62, #3ca86d);
+  color: #fff;
+  text-align: center;
+  padding: 8rem 2rem;                /* tinggi sama seperti hero section */
+  position: relative;
+  overflow: hidden;
+  width: 100vw;                      /* buat full lebar sejati */
+  margin-left: calc(-50vw + 50%);    /* hilangkan batas container */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 50px 50px;
+}
+
+.profile-header .container {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.profile-header h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.profile-header p {
+  font-size: 1.25rem;
+  max-width: 780px;
+  margin: auto;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 3rem 0 2rem;
+}
+.filter-bar span {
+  font-weight: 600;
+  color: #2f7f62;
+}
+.filter-bar .badge {
+  background: #e9f6f0;
+  color: #2f7f62;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.filter-bar .badge:hover,
+.filter-bar .badge.active {
+  background: #2f7f62;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Tabs ===== */
+.tabs {
+  margin-top: 2rem;
+}
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.tab-buttons button {
+  background: #e9f6f0;
+  border: none;
+  color: #2f7f62;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background: #2f7f62;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Card Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+  margin-bottom: 3rem;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.card-header {
+  background: linear-gradient(135deg, #2f7f62, #3ca86d);
+  color: #fff;
+  padding: 1.5rem;
+}
+.card-header h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+.card-body {
+  padding: 1.5rem;
+  color: #444;
+  flex: 1;
+}
+.card-body p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.card-body .requirements,
+.card-body .schedule {
+  background: #f5faf7;
+  border-left: 4px solid #2f7f62;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ===== Tombol Detail ===== */
+.btn-detail {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #2f7f62;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.btn-detail:hover {
+  background: #1f5d46;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Responsif ===== */
+@media (max-width: 768px) {
+  .profile-header h1 {
+    font-size: 2.4rem;
+  }
+  .profile-header p {
+    font-size: 1rem;
+  }
+  .tab-buttons {
+    gap: 0.5rem;
+  }
+  .tab-buttons button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .card-body {
+    padding: 1.2rem;
+  }
+}

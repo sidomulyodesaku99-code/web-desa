@@ -1,0 +1,145 @@
+/* ===== Header Berita (Full-width seperti Hero Section) ===== */
+.profile-header {
+  background: linear-gradient(135deg, #2f7f62, #3ca86d);
+  color: #fff;
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 40px 40px;
+}
+
+.profile-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 60%);
+  z-index: 1;
+}
+
+.profile-header .header-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.profile-header h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.profile-header p {
+  font-size: 1.25rem;
+  max-width: 780px;
+  margin: auto;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* ===== Konten Utama Berita ===== */
+.news-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.news-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #2f7f62;
+}
+
+/* ===== Kartu Berita ===== */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.news-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.news-card-content {
+  padding: 1.5rem;
+}
+
+.news-card-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2f7f62;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.news-card-content h3:hover {
+  color: #3ca86d;
+}
+
+.news-card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.news-card-content a {
+  display: inline-block;
+  color: #3ca86d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.news-card-content a:hover {
+  color: #2f7f62;
+  text-decoration: underline;
+}
+
+/* ===== Responsif ===== */
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 6rem 1rem;
+  }
+
+  .profile-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .profile-header p {
+    font-size: 1rem;
+  }
+
+  .news-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .news-card-content h3 {
+    font-size: 1.15rem;
+  }
+}
