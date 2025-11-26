@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +25,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6iqhvh3g1+#&_fpabc4l6=#k!#yvhb5!qh7kfam3s(+up1t4xa'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    'fauzimalik.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost'
+]
+
 
 
 # Application definition
@@ -50,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'webdesa.urls'
@@ -75,16 +86,33 @@ WSGI_APPLICATION = 'webdesa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_desa',         # nama database MySQL yang kamu buat
-        'USER': 'root',            # user default XAMPP
-        'PASSWORD': '',            # kosongkan jika tidak pakai password
-        'HOST': 'localhost',
-        'PORT': '3306',
+
+if os.getenv("PA_ENVIRONMENT") == "production":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv("PROD_NAME"),
+            'USER': os.getenv("PROD_USER"),
+            'PASSWORD': os.getenv("PROD_PASSWORD"),
+            'HOST': os.getenv("PROD_HOST"),
+            'PORT': os.getenv("PROD_PORT"),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+            }
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv("LOCAL_NAME"),
+            'USER': os.getenv("LOCAL_USER"),
+            'PASSWORD': os.getenv("LOCAL_PASSWORD"),
+            'HOST': os.getenv("LOCAL_HOST"),
+            'PORT': os.getenv("LOCAL_PORT"),
+        }
+    }
+
 
 
 
@@ -128,10 +156,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "desaapp" / "static",
+]
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 customColorPalette = [

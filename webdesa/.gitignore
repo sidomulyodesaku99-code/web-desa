@@ -7,7 +7,7 @@ staticfiles/
 
 # Python env
 venv/
-env/
+env/A
 ENV/
 *.log
 
