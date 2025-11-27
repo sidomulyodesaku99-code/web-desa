@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <style>
+        body { font-family: Arial; background:#f4f7f6; margin:0; }
+        .header { background:#2e7d32; color:white; padding:1rem; display:flex; justify-content:space-between; align-items:center; }
+        .container { max-width:1200px; margin:2rem auto; padding:0 1rem; }
+        .grid { display:grid; gap:1rem; }
+        .grid-4 { grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); }
+        .card { background:white; padding:1rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+        table { width:100%; border-collapse:collapse; }
+        th, td { padding:0.5rem; border-bottom:1px solid #ddd; text-align:left; }
+        .tabs { display:flex; gap:1rem; margin-bottom:1rem; cursor:pointer; }
+        .tab { padding:0.5rem 1rem; border-radius:5px; background:#c8e6c9; }
+        .tab.active { background:#2e7d32; color:white; }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
+        button.logout { background:#c62828; color:white; border:none; padding:0.5rem 1rem; cursor:pointer; }
+    </style>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+            document.getElementById(tabName+'-tab').classList.add('active');
+            document.getElementById(tabName+'-content').classList.add('active');
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>Dashboard Admin</h1>
+        <small>Panel administrasi Desa Maya</small>
+    </div>
+    <form action="{% url 'admin_logout' %}" method="post">{% csrf_token %}
+        <button type="submit" class="logout">Keluar</button>
+    </form>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <div id="dashboard-tab" class="tab active" onclick="switchTab('dashboard')">Dashboard</div>
+        <div id="content-tab" class="tab" onclick="switchTab('content')">Konten</div>
+        <div id="services-tab" class="tab" onclick="switchTab('services')">Layanan</div>
+        <div id="users-tab" class="tab" onclick="switchTab('users')">Pengguna</div>
+        <div id="settings-tab" class="tab" onclick="switchTab('settings')">Pengaturan</div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-content" class="tab-content active">
+        <div class="grid grid-4">
+            {% for stat in dashboard_stats %}
+            <div class="card">
+                <h3>{{ stat.title }}</h3>
+                <p style="font-size:1.5rem;font-weight:bold">{{ stat.value }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h3>Berita Terbaru</h3>
+        <table>
+            <tr><th>Judul</th><th>Status</th><th>Tanggal</th></tr>
+            {% for news in recent_news %}
+            <tr>
+                <td>{{ news.title }}</td>
+                <td>{{ news.status }}</td>
+                <td>{{ news.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Permohonan Terbaru</h3>
+        <table>
+            <tr><th>Jenis</th><th>Pemohon</th><th>Status</th><th>Tanggal</th></tr>
+            {% for req in recent_requests %}
+            <tr>
+                <td>{{ req.type }}</td>
+                <td>{{ req.applicant }}</td>
+                <td>{{ req.status }}</td>
+                <td>{{ req.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Konten -->
+    <div id="content-content" class="tab-content">
+        <p>Manajemen konten akan muncul di sini.</p>
+    </div>
+
+    <!-- Layanan -->
+    <div id="services-content" class="tab-content">
+        <p>Manajemen layanan akan muncul di sini.</p>
+    </div>
+
+    <!-- Pengguna -->
+    <div id="users-content" class="tab-content">
+        <h3>Pengguna Website</h3>
+        <table>
+            <tr><th>Nama</th><th>Email</th><th>Role</th><th>Login Terakhir</th></tr>
+            {% for user in website_users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.last_login }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Pengaturan -->
+    <div id="settings-content" class="tab-content">
+        <p>Pengaturan website muncul di sini.</p>
+    </div>
+
+</div>
+</body>
+</html>

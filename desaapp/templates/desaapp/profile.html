@@ -1,0 +1,226 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}Profil Desa{% endblock %}
+
+{% block content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'desaapp/css/profile.css' %}">
+{% endblock %}
+
+<!-- Header Profil -->
+<section class="profile-header">
+  <div class="container text-center">
+    <h1>Profil Desa Sidomulyo</h1>
+    <p>Mengenal lebih dekat sejarah, visi & misi, serta struktur pemerintahan Desa Sidomulyo</p>
+  </div>
+</section>
+
+<!-- Tabs -->
+<div class="tabs-container container">
+  <!-- Tombol navigasi tab -->
+  <div class="tabs-buttons">
+    <button class="tab-btn active" data-tab="sejarah">Sejarah</button>
+    <button class="tab-btn" data-tab="visi-misi">Visi & Misi</button>
+    <button class="tab-btn" data-tab="pemerintahan">Pemerintahan</button>
+    <button class="tab-btn" data-tab="statistik">Statistik</button>
+  </div>
+
+  <!-- Isi tab -->
+  <div class="tabs-content">
+
+    <!-- Sejarah -->
+    <!-- Bagian Sejarah Desa -->
+    <!-- Sejarah -->
+    <div id="sejarah" class="tab-pane active">
+      <section class="container mt-5">
+        <h2>{{ sejarah.judul }}</h2>
+        <article>
+          {{ sejarah.isi|safe }}
+        </article>
+        <p class="text-muted">
+          Terakhir diperbarui: {{ sejarah.tanggal_update|date:"d M Y" }}
+        </p>
+      </section>
+    </div>
+
+
+
+    <!-- Visi & Misi -->
+    <!-- Visi & Misi -->
+    <div id="visi-misi" class="tab-pane">
+      <div class="card">
+        <h3>Visi</h3>
+        <p>{{ visi_misi.visi|safe }}</p>
+      </div>
+      <div class="card">
+        <h3>Misi</h3>
+        {{ visi_misi.misi|safe }}
+      </div>
+    </div>
+
+    <!-- Pemerintahan -->
+    <div id="pemerintahan" class="tab-pane">
+      <div class="card">
+        <h2 class="text-center">Struktur Pemerintahan Desa Sidomulyo 2024-2030</h2>
+
+        <!-- Kepala Desa & Pejabat -->
+        <div class="organigram">
+          <ul>
+            <li>
+              <div class="official-card">
+                <span class="official-name">Wahyudi Salim</span>
+                <span class="official-position">BPD (Badan Permusyawaratan Desa) </span>
+              </div>
+
+              <P>
+              <div class="official-card">
+                <span class="official-name">Ashari Setiawan S.Pd.I</span>
+                <span class="official-position">Kepala Desa</span>
+              </div>
+              </P>
+              <ul class="subtree">
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Agus Wirawan</span>
+                    <span class="official-position">Sekretaris Desa</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Sugeng Wiyono</span>
+                    <span class="official-position">Kaur Keuangan</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Mariana Permata Saputri</span>
+                    <span class="official-position">Kaur Umum</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Agus Setia Nugraha S.P</span>
+                    <span class="official-position">Kaur Perencanaan</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">I Nyoman Darya</span>
+                    <span class="official-position">Kasi Pemerintahan</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Sahrul Saputra S.IP</span>
+                    <span class="official-position">Kasi Kesejahteraan</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">Yohana P.D Ratu</span>
+                    <span class="official-position">Kasi Pelayanan</span>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lembaga Desa -->
+        <div class="organigram mt-4">
+          <ul>
+            {% for inst in institutions %}
+            <li>
+              <div class="official-card">
+                <span class="official-name"><strong>{{ inst.name }}</strong></span>
+                <span class="official-position"><strong>Ketua:</strong> {{ inst.leader }}</span>
+              </div>
+              <ul class="subtree">
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">{{ inst.secretary }}</span>
+                    <span class="official-position">Sekretaris</span>
+                  </div>
+                </li>
+                {% for member in inst.members %}
+                <li>
+                  <div class="official-card">
+                    <span class="official-name">{{ member }}</span>
+                    <span class="official-position">Anggota</span>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistik -->
+    <div id="statistik" class="tab-pane">
+      <div class="card">
+        <h3 class="text-center">Statistik Desa</h3>
+        <div class="stats-grid">
+          {% for stat in statistics %}
+          <div class="stat-box">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Progress usia -->
+        {% for group in age_groups %}
+        <div class="age-group" style="--percentage: {{ group.percentage }}%;">
+          <div class="age-label">
+            <span>{{ group.group }}</span>
+            <span>{{ group.count }} orang ({{ group.percentage }}%)</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="--percentage: {{ group.percentage }}%;"></div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Data wilayah -->
+        <h3 class="text-center mt-4">Wilayah Administratif</h3>
+        <div class="admin-grid">
+          <div class="admin-card"><h4>Luas Wilayah</h4><p>10.44 km²</p></div>
+          <div class="admin-card"><h4>Jumlah RT</h4><p>12</p></div>
+          <div class="admin-card"><h4>Jumlah RW</h4><p>2</p></div>
+          <div class="admin-card"><h4>Dusun</h4><p>2</p></div>
+          <div class="admin-card"><h4>Kode Pos</h4><p>75657</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tabs JS -->
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.age-group').forEach(group => {
+      const fill = group.querySelector('.progress-bar-fill');
+      const percentage = getComputedStyle(group).getPropertyValue('--percentage');
+      fill.style.width = percentage;
+    });
+  });
+</script>
+{% endblock %}

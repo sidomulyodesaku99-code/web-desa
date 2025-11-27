@@ -1,0 +1,26 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}Ajukan Layanan{% endblock %}
+
+{% block content %}
+<section class="container mt-5">
+    <h2>Ajukan Layanan: {{ service.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+        <div>
+            <label for="nik">NIK</label>
+            <input type="text" id="nik" name="nik" required>
+        </div>
+        <div>
+            <label for="alamat">Alamat</label>
+            <textarea id="alamat" name="alamat" required></textarea>
+        </div>
+        <button type="submit">Kirim Pengajuan</button>
+    </form>
+</section>
+{% endblock %}

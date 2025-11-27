@@ -1,0 +1,65 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}Beranda{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'desaapp/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1><i class="fas fa-leaf hero-icon"></i> Selamat Datang di Desa Sidomulyo</h1>
+      <p>Portal resmi informasi dan layanan masyarakat. Melayani dengan sepenuh hati untuk kemajuan desa.</p>
+      <a href="{% url 'profile' %}" class="hero-btn">
+        <i class="fas fa-info-circle"></i> Lihat Profil Desa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Sambutan Kepala Desa -->
+<section class="sambutan-section">
+  <div class="content-container sambutan-flex">
+    {% if kepala_desa and kepala_desa.foto %}
+      <div class="sambutan-foto">
+        <img src="{{ kepala_desa.foto.url }}" alt="Kepala Desa">
+      </div>
+    {% endif %}
+    <div class="sambutan-text">
+      <h2><i class="fas fa-user-tie"></i> Sambutan Kepala Desa</h2>
+      <div class="sambutan-content">
+        {{ kepala_desa.sambutan|safe }}
+      </div>
+      <p><strong>{{ kepala_desa.nama|default:"-" }}</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Visi & Misi -->
+<section class="visi-misi-section">
+  <div class="content-container">
+    <h2><i class="fas fa-bullseye"></i> {{ visi_misi.judul }}</h2>
+    <p class="visi-subtitle"><i>Komitmen kami untuk membangun desa yang sejahtera dan berkelanjutan</i></p>
+
+    <div class="visi-misi-flex">
+      <div class="visi-block">
+        <h3><i class="fas fa-lightbulb"></i> Visi</h3>
+        <div class="visi-text">
+          {{ visi_misi.visi|safe }}
+        </div>
+      </div>
+
+      <div class="misi-block">
+        <h3><i class="fas fa-tasks"></i> Misi</h3>
+        <div class="misi-list">
+          {{ visi_misi.misi|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

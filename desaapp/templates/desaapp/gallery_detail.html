@@ -1,0 +1,72 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}{{ gallery.title }} - Galeri Desa{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'desaapp/css/gallery_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="gallery-detail-header">
+  <div class="container text-center">
+    <h1>{{ gallery.title }}</h1>
+    <p class="meta">
+      <span>{{ gallery.date }}</span> | 
+      <span>{{ gallery.category }}</span> | 
+      <span>{{ gallery.views }} views</span>
+    </p>
+  </div>
+</section>
+
+<div class="container gallery-detail-content">
+
+  {# ===== Media (Foto / Video) ===== #}
+  {% if gallery.images.exists or gallery.video_file or gallery.video_url %}
+    <div class="media-wrapper">
+      {% if gallery.images.exists %}
+        <div class="photo-gallery">
+          {% for img in gallery.images.all %}
+            <img src="{{ img.image.url }}" alt="{{ gallery.title }}">
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if gallery.video_file or gallery.video_url %}
+        <div class="video-wrapper">
+          {% if gallery.video_file %}
+            <video controls>
+              <source src="{{ gallery.video_file.url }}" type="video/mp4">
+              Browser tidak mendukung video.
+            </video>
+          {% else %}
+            <video controls>
+              <source src="{{ gallery.video_url }}" type="video/mp4">
+              Browser tidak mendukung video.
+            </video>
+          {% endif %}
+          {% if gallery.duration %}
+            <p><strong>Durasi:</strong> {{ gallery.duration }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {# ===== Deskripsi / Teks di bawah media ===== #}
+  {% if gallery.description %}
+    <div class="gallery-description text-center">
+      <p>{{ gallery.description }}</p>
+    </div>
+  {% endif %}
+
+  {# ===== Jika sama sekali tidak ada media ===== #}
+  {% if not gallery.images.exists and not gallery.video_file and not gallery.video_url %}
+    <p class="text-center"><em>Belum ada media untuk item ini.</em></p>
+  {% endif %}
+
+  <div class="back-link">
+    <a href="{% url 'gallery' %}" class="btn btn-detail">← Kembali ke Galeri</a>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!-- navbar.html -->
+<nav class="navbar navbar-full">
+  <div class="navbar-inner">
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <div class="brand-logo d-flex align-items-center justify-content-center"
+           style="width:55px; height:55px; background:#59b011; color:white; border-radius:55%; font-weight:bold; font-size:1.5rem;">
+        DS <i class="fas fa-leaf ms-1"></i>
+      </div>
+      <div class="ms-2 navbar-brand-text">
+        <h1 class="m-0">Desa Sidomulyo</h1>
+        <p class="m-0">Portal Resmi Desa</p>
+      </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="navbar-links d-flex align-items-center">
+      <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}"><i class="fas fa-home me-2"></i>Beranda</a></li>
+      <li><a href="{% url 'profile' %}" class="{% if request.path == '/profil/' %}active{% endif %}"><i class="fas fa-info-circle me-2"></i>Profil Desa</a></li>
+      <li><a href="{% url 'news' %}" class="{% if request.path == '/berita/' %}active{% endif %}"><i class="fas fa-newspaper me-2"></i>Berita</a></li>
+      <li><a href="{% url 'gallery' %}" class="{% if request.path == '/gallery/' %}active{% endif %}"><i class="fas fa-images me-2"></i>Galeri</a></li>
+      <li><a href="{% url 'services' %}" class="{% if request.path == '/layanan/' %}active{% endif %}"><i class="fas fa-cogs me-2"></i>Layanan</a></li>
+      <li><a href="{% url 'contact' %}" class="{% if request.path == '/kontak/' %}active{% endif %}"><i class="fas fa-envelope me-2"></i>Kontak</a></li>
+
+      <!-- Admin Panel (khusus superuser/staff) -->
+      {% if user.is_staff or user.is_superuser %}
+      <li class="nav-item ms-3 admin-nav-item">
+        <a href="{% url 'admin:index' %}" class="btn btn-success">
+          <i class="fas fa-user-shield me-2"></i>Admin Panel
+        </a>
+      </li>
+      {% endif %}
+
+      <!-- Garis pemisah -->
+      <li class="nav-divider"></li>
+
+      <!-- Login / Logout -->
+      {% if user.is_authenticated %}
+      <li class="nav-item ms-3 user-auth-item">
+        <a class="nav-link" href="{% url 'logout_user' %}">
+          <i class="fas fa-sign-out-alt me-1"></i> Logout
+        </a>
+      </li>
+      {% else %}
+      <li class="nav-item dropdown user-auth-item ms-3">
+        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-sign-in-alt me-1"></i> Login
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="loginDropdown">
+          <li><a class="dropdown-item" href="{% url 'login_user' %}"><i class="fas fa-user me-2 text-success"></i>Login Pengguna</a></li>
+          <li><a class="dropdown-item" href="{% url 'login_admin' %}"><i class="fas fa-user-shield me-2 text-success"></i>Login Admin</a></li>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="{% url 'home' %}">Beranda</a>
+      <a href="{% url 'profile' %}">Profil Desa</a>
+      <a href="{% url 'news' %}">Berita</a>
+      <a href="{% url 'services' %}">Layanan</a>
+      <a href="{% url 'gallery' %}">Galeri</a>
+      <a href="{% url 'contact' %}">Kontak</a>
+
+      {% if user.is_staff or user.is_superuser %}
+        <a href="{% url 'admin:index' %}">Admin Panel</a>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_user' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login_user' %}">Login Pengguna</a>
+        <a href="{% url 'login_admin' %}">Login Admin</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

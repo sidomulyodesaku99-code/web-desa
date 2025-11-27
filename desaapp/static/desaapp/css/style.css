@@ -1,0 +1,603 @@
+/* ==========================================================
+   STYLE.CSS — WEBSITE DESA SIDOMULYO
+   Tema: Hijau Alam, Modern, Responsif
+   ==========================================================
+   Struktur:
+   1. Reset & Global Styles
+   2. Typography & Elements
+   3. Layout Utilities
+   4. Buttons
+   5. Navbar (Modern Navigation)
+   6. Header / Hero Section
+   7. Tabs & Cards (Konten Dinamis)
+   8. Profil Desa & Struktur Organisasi
+   9. Statistik Desa
+   10. Footer
+   11. Main Content Layout
+   12. Responsive Adjustments
+   ========================================================== */
+
+
+/* ==========================================================
+   1. RESET & GLOBAL STYLES
+   ========================================================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Cegah geser horizontal */
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fdfcf6;
+  color: #333;
+}
+
+
+/* ==========================================================
+   2. TYPOGRAPHY & ELEMENTS
+   ========================================================== */
+h1, h2, h3 {
+  color: #ffffff;
+  margin-bottom: 0.5em;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ==========================================================
+   3. LAYOUT UTILITIES
+   ========================================================== */
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+
+/* ==========================================================
+   4. BUTTONS
+   ========================================================== */
+.btn {
+  display: inline-block;
+  background: #2f7f62;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #3abf94;
+}
+
+/* ==========================================================
+   5. NAVBAR (MODERN NAVIGATION - FINAL VERSION)
+   ========================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #2f7f62;
+  padding: 0.8rem 2%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0 ;
+  box-shadow: 0 2px 10px rgba(47, 127, 98, 0.35); /* bayangan hijau lembut */
+}
+
+/* Navbar inner wrapper */
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Brand section */
+.brand-logo {
+  background: #fff;
+  color: #2f7f62;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand-text h1 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.navbar-brand-text p {
+  color: #d4f5e2;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.navbar-links a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: #75ff66;
+}
+
+/* Admin Button */
+.admin-btn {
+  background: #88b04b;
+  color: #fff !important;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+  background: #6c9c3d;
+}
+
+/* Mobile Navigation */
+.mobile-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #2f7f62;
+  padding: 1rem;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+/* RESPONSIVE SETTINGS */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .navbar {
+    padding: 0.8rem 5%;
+  }
+}
+
+/* Hapus jarak putih di bawah navbar */
+body, html, main {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fdf9;
+}
+
+/* Hilangkan garis putih halus di bawah navbar */
+.navbar::after {
+  content: "";
+  display: block;
+  height: 0;
+  background: transparent;
+  border: none;
+}
+
+
+/* ==========================================================
+   6. HEADER / HERO SECTION
+   ========================================================== */
+.header-section {
+  width: 100%;
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #2f7f62, #88b04b);
+  color: #fff;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.header-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.header-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+
+/* ==========================================================
+   7. TABS & CARDS (KONTEN DINAMIS)
+   ========================================================== */
+.tabs { margin-top: 20px; }
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-buttons li {
+  list-style: none;
+}
+
+.tab-buttons li button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #eaf7f1;
+  color: #2f7f62;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-buttons li.active button,
+.tab-buttons li button:hover {
+  background: #2f7f62;
+  color: #fff;
+}
+
+.tab-contents {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* Card Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+  margin-bottom: 2rem;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card h3 {
+  color: #2f7f62;
+  margin-bottom: 1rem;
+}
+
+
+/* ==========================================================
+   10. FOOTER
+   ========================================================== */
+footer {
+  background-color: #1F3A3D;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #4ED6A7;
+}
+
+footer .footer-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+footer hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 30px 0;
+}
+
+footer .copyright {
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  footer .footer-grid {
+    flex-direction: column;
+  }
+}
+
+
+/* ==========================================================
+   11. MAIN CONTENT LAYOUT
+   ========================================================== */
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   12. RESPONSIVE ADJUSTMENTS
+   ========================================================== */
+@media (max-width: 768px) {
+  .navbar-links { flex-wrap: wrap; }
+  main { padding: 0 10px; }
+}
+
+/* ==========================================================
+   13. SCROLL TO TOP BUTTON
+   ========================================================== */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  background-color: #2f7f62;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+#scrollTopBtn.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  background-color: #3abf94;
+  transform: translateY(-4px);
+}
+
+#scrollTopBtn i {
+  font-size: 16px;
+}
+
+
+/* ==========================================================
+   LOGIN PAGE (DESA SIDOMULYO) — MODERN FOREST THEME
+   ========================================================== */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2f7f62, #88b04b);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 50px 45px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.login-card h2 {
+  color: #2f7f62;
+  font-weight: 700;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.login-card form {
+  margin-top: 10px;
+}
+
+.login-card .form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.login-card label {
+  color: #2f7f62;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #b2d8c3;
+  transition: all 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: #2f7f62;
+  box-shadow: 0 0 6px rgba(47, 127, 98, 0.4);
+  outline: none;
+}
+
+.btn-login {
+  width: 100%;
+  background: #2f7f62;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #3abf94;
+  transform: translateY(-2px);
+}
+
+.login-card .alert {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-card a {
+  display: inline-block;
+  color: #2f7f62;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: color 0.3s;
+}
+
+.login-card a:hover {
+  color: #3abf94;
+  text-decoration: underline;
+}
+
+/* Animasi lembut muncul dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .login-card {
+    width: 95%;
+    padding: 35px 25px;
+  }
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ==========================================================
+   NAVBAR: ADMIN PANEL & LOGIN/LOGOUT SECTION
+   ========================================================== */
+.admin-nav-item {
+  margin-left: 1rem;
+}
+
+.user-auth-item {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Garis pemisah antara menu utama dan login/logout */
+.nav-divider {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  height: 28px;
+  margin: 0 15px;
+  align-self: center;
+  list-style: none;
+}
+
+/* Efek hover halus pada login/logout */
+.nav-link {
+  color: #fff; /* pastikan warna putih tetap tampil */
+  transition: all 0.3s ease;
+  font-weight: 600; /* biar lebih jelas */
+}
+
+.nav-link:hover {
+  color: #ffd166 !important;
+}
+
+
+
+
+
+/* ==========================================================
+   DROPDOWN LOGIN FIX — TAMPIL SAAT KLIK, WARNA ALAM
+   ========================================================== */
+.dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #cdecd7;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+}
+
+.dropdown-item {
+  color: #2f7f62 !important; /* pastikan tetap hijau saat tampil */
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background-color: #dff5e7;
+  color: #1b4d3e !important;
+  font-weight: 600;
+}

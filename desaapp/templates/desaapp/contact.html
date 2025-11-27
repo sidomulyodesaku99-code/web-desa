@@ -1,0 +1,106 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}Kontak{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'desaapp/css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contact-page">
+
+<section class="profile-header">
+  <div class="container">
+    <h1>Layanan Desa Sidomulyo</h1>
+    <p>Temukan berbagai layanan publik yang tersedia untuk warga Sidomulyo.</p>
+  </div>
+</section>             
+
+
+  <!-- Info Cards -->
+  <section class="contact-grid">
+    <div class="contact-card">
+      <h3><i class="fas fa-map-marker-alt"></i> Alamat Kantor</h3>
+      <p>Jl.Nusantara</p>
+      <p>Kec. Kombeng, Kab. Kutai Timur 75657</p>
+    </div>
+    <div class="contact-card">
+      <h3><i class="fas fa-phone"></i> Nomor Telepon</h3>
+      <p>Kepala Desa: 0812-3456-7890</p>
+      <p>Sekretaris Desa: 0812-3456-7890</p>
+      <p>Kaur Keuangan: 0812-3456-7890</p>
+      <p>Kaur Umum: 0812-3456-7890</p>
+      <p>Kaur Perencanaan: 0812-3456-7890</p>
+      <p>Kasi Pemerintahan: 0812-3456-7890</p>
+      <p>Kasi Kesejahteraan: 0812-3456-7890</p>
+      <p>Kasi Pelayanan: 0812-3456-7890</p>
+    </div>
+    <div class="contact-card">
+      <h3><i class="fas fa-envelope"></i> Email</h3>
+      <p>Sidomulyodesaku950@gmail.com</p>
+    </div>
+  </section>
+
+  <!-- Form + Sidebar -->
+  <div class="contact-main-grid">
+
+    <!-- Form -->
+    <div class="contact-form-card">
+      <h2>Kirim Pesan</h2>
+      <p>Sampaikan pesan, pertanyaan, atau saran Anda kepada kami</p>
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-send">
+          <i class="fas fa-paper-plane"></i> Kirim Pesan
+        </button>
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="contact-sidebar">
+      <div class="contact-card">
+        <h3><i class="fas fa-clock"></i> Jam Pelayanan</h3>
+        <p>Senin - Kamis: 08:00 - 14:00</p>
+        <p>Jum at: 08:00 - 11:00</p>
+        <p>Sabtu - Minggu: Tutup</p>
+      </div>
+      <div class="contact-card emergency">
+        <h3><i class="fas fa-exclamation-triangle"></i> Kontak Darurat</h3>
+        <p>Polsek: 110</p>
+        <p>Pemadam: 113</p>
+        <p>Ambulans: 118</p>
+        <p>SAR: 115</p>
+        <p>Bhabinkamtibmas: 0812-3456-7891</p>
+      </div>
+      <!-- Catatan Respon Cepat -->
+      <div class="contact-note">
+        <h3><i class="fas fa-info-circle"></i> Catatan Penting</h3>
+        <p>
+          Untuk <strong>respon cepat</strong>, silakan langsung datang ke 
+          <strong>Kantor Desa Sidomulyo</strong> pada jam layanan yang tersedia. 
+          Tim perangkat desa siap membantu Anda secara langsung.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Map -->
+  <div class="contact-map-card">
+    <h2><i class="fas fa-map"></i> Lokasi Kantor Desa</h2>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.1337606399866!2d116.93752707472403!3d1.0613849989284236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32094d1effd620ed%3A0x7c122f6372daf0ee!2sKantor%20Desa%20Sidomulyo%2C%20Kec.Kongbeng%2C%20Kabupaten%20kutai%20timur%2C%20kalimantan%20timur!5e0!3m2!1sen!2sus!4v1755660604432!5m2!1sen!2sus" 
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'desaapp/base.html' %}
+{% load static %}
+
+{% block title %}Layanan Desa{% endblock %}
+
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'desaapp/css/services.css' %}">
+{% endblock %}
+
+<div class="page-container">
+
+  <!-- Header -->
+  <section class="profile-header">
+    <div class="container text-center">
+      <h1>Layanan Desa</h1>
+      <p>Kemudahan akses layanan administrasi dan informasi untuk masyarakat Desa Sidomulyo</p>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <ul class="tab-buttons">
+      <li class="active"><button data-tab="tab-services">📄 Layanan Surat</button></li>
+      <li><button data-tab="tab-external">🌐 Link Eksternal</button></li>
+    </ul>
+
+    <div class="tab-contents">
+
+      <!-- Services Tab -->
+      <div id="tab-services" class="tab-pane active">
+        <!-- Filter -->
+        <div class="filter-bar">
+          <form method="get">
+            <select name="category" onchange="this.form.submit()">
+              <option value="Semua" {% if selected_category == "Semua" %}selected{% endif %}>Semua</option>
+              <option value="Kependudukan" {% if selected_category == "Kependudukan" %}selected{% endif %}>Kependudukan</option>
+              <option value="Sosial" {% if selected_category == "Sosial" %}selected{% endif %}>Sosial</option>
+              <option value="Perizinan" {% if selected_category == "Perizinan" %}selected{% endif %}>Perizinan</option>
+              <option value="Ekonomi" {% if selected_category == "Ekonomi" %}selected{% endif %}>Ekonomi</option>
+            </select>
+          </form>
+        </div>
+
+        <!-- Services List -->
+        <div class="card-grid">
+          {% for service in services %}
+          <div class="card">
+            <h3>{{ service.name }} <span class="badge">{{ service.category }}</span></h3>
+            <p>{{ service.description }}</p>
+
+            <div class="requirements">
+              <strong>Syarat:</strong>
+              <ul>
+                {% for req in service.get_requirements_list %}
+                <li>{{ req }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <p><strong>Waktu Proses:</strong> {{ service.processing_time }}</p>
+            <p><strong>Biaya:</strong> {{ service.fee }}</p>
+            <a href="#" class="btn">Kunjungi Kantor Desa</a>
+          </div>
+          {% empty %}
+          <p class="text-center">Belum ada layanan tersedia.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- External Links Tab -->
+      <div id="tab-external" class="tab-pane">
+        <h2>Link Eksternal</h2>
+        <div class="card-grid">
+          {% for ext in external_services %}
+          <div class="card">
+            <h3>{{ ext.name }}</h3>
+            <p>{{ ext.description }}</p>
+            <a href="{{ ext.url }}" target="_blank" class="btn">🔗 Kunjungi Website</a>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="card">
+          <h3>🕒 Jadwal Pelayanan Kantor Desa</h3>
+          <table class="schedule">
+            <tr><td>Senin - Kamis</td><td>08:00 - 14:00 WITA</td></tr>
+            <tr><td>Jum'at</td><td>08:00 - 11:00 WITA</td></tr>
+            <tr><td>Sabtu & Minggu</td><td class="closed">Tutup</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Tabs Script -->
+<script>
+  const tabButtons = document.querySelectorAll('.tab-buttons button');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.parentElement.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+
+      btn.parentElement.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+{% endblock %}
