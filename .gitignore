@@ -5,16 +5,16 @@ db.sqlite3
 media/
 staticfiles/
 
-# Python env
+# Python environment
 venv/
-env/A
+env/
 ENV/
 *.log
 
 # Secrets
 .env
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
